@@ -1,16 +1,10 @@
 export const featuredPokemon = [
-  'charmander',
-  'charmeleon',
-  'charizard',
   'bulbasaur',
-  'ivysaur',
-  'venusaur',
-  'squirtle',
-  'wartortle',
-  'blastoise',
-  'haunter',
-  'scyther',
-  'arcanine'
+  'butterfree',
+  'charizard',
+  'pidgeotto',
+  'pikachu',
+  'squirtle'
 ] as const;
 
 export type Pokemon = typeof featuredPokemon[number];
