@@ -59,7 +59,6 @@ function ItemCard(
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/201.png";
   }
 
-  // create function that conditinally shows the add to cart or remove from cart button based on value of itemInCart function
   function showAddOrRemoveButton() {
     if (itemInCart(itemsCart, props.item.id)) {
       return (
