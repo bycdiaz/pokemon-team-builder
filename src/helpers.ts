@@ -29,3 +29,12 @@ export function itemsInCart(cart: Cart): number {
     return count + item.quantity;
   }, 0);
 }
+
+/**
+ * Total cost of all items in cart
+ */
+export function totalCost(cart: Cart) {
+  return Object.values(cart).reduce((total, item) => {
+    return total + item.item.cost * item.quantity;
+  }, 0);
+}
