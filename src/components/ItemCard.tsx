@@ -35,7 +35,10 @@ function ItemCard(
     setItemCart((prevState) => {
       return {
         ...prevState,
-        [item.id]: item
+        [item.id]: {
+          item,
+          quantity: 1,
+        }
       }
     });
   }
@@ -66,7 +69,7 @@ function ItemCard(
           className="remove-from-cart"
           onClick={() => handleRemoveFromCart(props.item)}
         >
-          Remove from cart
+          Remove all from cart
         </button>
       )
     }

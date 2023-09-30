@@ -22,5 +22,8 @@ export type ItemData = {
 }
 
 export type Cart = {
-  [itemId: number]: ItemData
+  [itemId: number]: {
+    item: ItemData,
+    quantity: number
+  }
 }
