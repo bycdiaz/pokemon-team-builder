@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ItemCartContext } from "../Context";
 import { ItemData } from "../data/types";
 import { itemInCart } from "../helpers";
@@ -9,6 +9,7 @@ function ItemCard(
   }
 ) {
   const { itemsCart, setItemCart } = useContext(ItemCartContext);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="store-item">
@@ -27,7 +28,7 @@ function ItemCard(
     </div>
   );
 
-  function handleAddToCart(item: ItemData) {
+  function handleAddToCart(item: ItemData, quantity: number) {
     if (itemInCart(itemsCart, item.id)) {
       return;
     }
@@ -37,7 +38,7 @@ function ItemCard(
         ...prevState,
         [item.id]: {
           item,
-          quantity: 1,
+          quantity
         }
       }
     });
@@ -69,18 +70,35 @@ function ItemCard(
           className="remove-from-cart"
           onClick={() => handleRemoveFromCart(props.item)}
         >
-          Remove all from cart
+          Remove from cart
         </button>
       )
     }
 
     return (
-      <button
-        className="add-to-cart"
-        onClick={() => handleAddToCart(props.item)}
-      >
-        Add to cart
-      </button>
+      <div className="cart-buttons">
+        <div className="quantity-buttons">
+          <button
+            className="increase"
+            onClick={() => setQuantity(quantity + 1)}
+          >
+            +
+          </button>
+          <button
+            className="decrease"
+            onClick={() => setQuantity(quantity - 1)}
+            disabled={quantity === 1}
+          >
+            -
+          </button>
+        </div>
+        <button
+          className="add-to-cart-button"
+          onClick={() => handleAddToCart(props.item, quantity)}
+        >
+          {`Add ${quantity} to cart`}
+        </button>
+      </div>
     )
   }
 }
