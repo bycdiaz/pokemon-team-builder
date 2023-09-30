@@ -23,15 +23,7 @@ function ItemCard(
       <div className="item-cost">
         {props.item.cost}
       </div>
-      <div className="item-buttons">
-        <button
-          className="add-to-cart"
-          onClick={() => handleAddToCart(props.item)}
-          disabled={itemInCart(itemsCart, props.item.id)}
-        >
-          Add to cart
-        </button>
-      </div>
+      {showAddOrRemoveButton()}
     </div>
   );
 
@@ -48,6 +40,16 @@ function ItemCard(
     });
   }
 
+  function handleRemoveFromCart(item: ItemData) {
+    if (!itemInCart(itemsCart, item.id)) {
+      return;
+    }
+
+    const currentState = { ...itemsCart };
+    delete currentState[item.id];
+    setItemCart(currentState);
+  }
+
   function setSprite(spriteUrl: string) {
     if (spriteUrl) {
       return spriteUrl
@@ -55,6 +57,29 @@ function ItemCard(
 
     // sprite for pokemon named Unown
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/201.png";
+  }
+
+  // create function that conditinally shows the add to cart or remove from cart button based on value of itemInCart function
+  function showAddOrRemoveButton() {
+    if (itemInCart(itemsCart, props.item.id)) {
+      return (
+        <button
+          className="remove-from-cart"
+          onClick={() => handleRemoveFromCart(props.item)}
+        >
+          Remove from cart
+        </button>
+      )
+    }
+
+    return (
+      <button
+        className="add-to-cart"
+        onClick={() => handleAddToCart(props.item)}
+      >
+        Add to cart
+      </button>
+    )
   }
 }
 

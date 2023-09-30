@@ -20,3 +20,7 @@ export type ItemData = {
   name: string,
   spriteUrl: string,
 }
+
+export type Cart = {
+  [itemId: number]: ItemData
+}
