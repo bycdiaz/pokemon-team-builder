@@ -1,11 +1,13 @@
 import { NavigationOption, userReadableNavigationOptions } from "../data/types";
 import Featured from "./Featured";
+import Cart from "./Cart";
 
 function ContentContainer(props: { sectionName: NavigationOption }) {
-  const section = props.sectionName;
 
-  if (section === 'featured') {
+  if (props.sectionName === 'featured') {
     return <Featured />;
+  } else if (props.sectionName === 'cart') {
+    return <Cart />;
   } else {
     return (
       <div>
