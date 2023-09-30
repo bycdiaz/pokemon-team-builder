@@ -1,4 +1,4 @@
-import { ItemData } from "./data/types";
+import { Cart, ItemData } from "./data/types";
 
 export function randomNumberGenerator() {
   const randomNumbers: number[] = [];
@@ -14,6 +14,18 @@ export function randomNumberGenerator() {
   return randomNumbers;
 }
 
+/**
+ * Returns boolean indicating if item is in cart
+ */
 export function itemInCart(cart: ItemData | {}, itemId: number) {
   return Object.keys(cart).includes(itemId.toString());
+}
+
+/**
+ * Count of all items in cart
+ */
+export function itemsInCart(cart: Cart): number {
+  return Object.values(cart).reduce((count, item) => {
+    return count + item.quantity;
+  }, 0);
 }

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { NavigationOption, userReadableNavigationOptions } from "../data/types";
 import { useContext } from "react";
 import { ItemCartContext } from "../Context";
+import { itemsInCart } from "../helpers";
 
 function Navigation(props: {
   navOptions: readonly NavigationOption[]
@@ -24,7 +25,7 @@ function Navigation(props: {
             <div
               className="cart-count"
             >
-              {option === 'cart' && Object.keys(itemsCart).length}
+              {option === 'cart' && itemsInCart(itemsCart)}
             </div>
           </div>
         )
