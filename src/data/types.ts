@@ -11,7 +11,7 @@ export const userReadableNavigationOptions: {
   home: 'Home',
   search: 'Search',
   featured: 'Featured Items',
-  cart: 'My Team'
+  cart: 'My Cart'
 };
 
 export type ItemData = {
