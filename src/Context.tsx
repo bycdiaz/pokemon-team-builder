@@ -1,20 +1,21 @@
 import React, { createContext, useState } from "react";
+import { ItemData } from "./data/types";
 
-interface TeamCountContextType {
-  teamCount: number;
-  setTeamCount: React.Dispatch<React.SetStateAction<number>>;
+interface ItemCartContextType {
+  itemsCart: ItemData | {};
+  setItemCart: React.Dispatch<React.SetStateAction<ItemData>>;
 }
-export const TeamCountContext = createContext<TeamCountContextType>({
-  teamCount: 0,
-  setTeamCount: () => { },
+export const ItemCartContext = createContext<ItemCartContextType>({
+  itemsCart: {},
+  setItemCart: () => { },
 });
 
 export function TeamCountProvider(props: { children: React.ReactNode }) {
-  const [teamCount, setTeamCount] = useState(0);
+  const [itemsCart, setItemCart] = useState({});
 
   return (
-    <TeamCountContext.Provider value={{ teamCount, setTeamCount }}>
+    <ItemCartContext.Provider value={{ itemsCart, setItemCart }}>
       {props.children}
-    </TeamCountContext.Provider>
+    </ItemCartContext.Provider>
   )
 };
