@@ -7,7 +7,7 @@ function App(props: {
 
   return (
     <div>
-      <Header pageTitle='Pokemon Team Builder' />
+      <Header pageTitle='Pokemon Store' />
       <h2>
         {content()}
       </h2>
@@ -19,7 +19,7 @@ function App(props: {
       return props.child;
     }
 
-    return 'Welcome to the Pokemon Team Builder. Wow!';
+    return 'Welcome to the Pokemon Store. Wow!';
   }
 }
 

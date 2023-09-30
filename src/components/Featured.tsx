@@ -1,39 +1,38 @@
 import { useEffect, useState } from "react";
-import { featuredPokemon } from "../data/featuredPokemon";
-import { PokemonData } from "../data/types";
+import { ItemData } from "../data/types";
+import { randomNumberGenerator } from "../helpers";
 
 function Featured() {
-  const [pokemonData, setPokemonData] = useState<PokemonData[]>([]);
+  const [itemData, setItemData] = useState<ItemData[]>([]);
 
   useEffect(() => {
-    getFeaturedPokemonData();
+    getFeaturedItemData();
   }, []);
 
   return (
     <div>
-      Featured Pokemon!!
+      {/* TODO Import card component */}
+      Featured Items!!
     </div>
   );
 
-  async function getFeaturedPokemonData() {
-    Promise.all(featuredPokemon.map(pokemon =>
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
+  async function getFeaturedItemData() {
+    Promise.all(randomNumberGenerator().map(idNumber =>
+      fetch(`https://pokeapi.co/api/v2/item/${idNumber}`)
     ))
       .then(async promiseResult => {
-        const requestData: PokemonData[] = [];
+        const requestData: ItemData[] = [];
 
-        for (const pokemonPromise of promiseResult) {
-          const data = await pokemonPromise.json();
+        for (const promise of promiseResult) {
+          const data = await promise.json();
 
           requestData.push({
             name: data.name,
-            spriteUrl: data.sprites.front_default,
-            height: data.height,
-            weight: data.weight,
-            types: data.types.map((type: any) => type.type.name)
+            spriteUrl: data.sprites.default,
+            cost: data.cost
           })
         }
-        setPokemonData(requestData);
+        setItemData(requestData);
       }).catch(error => {
         // TODO: Handle error with some UI indicating a failure to get pokemon data
         console.log(error);

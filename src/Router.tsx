@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ContentContainer from "./components/ContentContainer";
-import { featured, search, team } from "./data/types";
+import { featured, search, cart } from "./data/types";
 
 const Router = () => {
   return <RouterProvider router={
@@ -32,10 +32,10 @@ const Router = () => {
         // errorElement: <ErrorPage />,
       },
       {
-        path: `/${team}`,
+        path: `/${cart}`,
         element: (
           <App
-            child={<ContentContainer sectionName={team} />}
+            child={<ContentContainer sectionName={cart} />}
           />
         )
         ,
