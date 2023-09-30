@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { ItemCartContext } from "../Context";
 import { ItemData } from "../data/types";
+import { itemInCart } from "../helpers";
 
 function ItemCard(
   props: {
     item: ItemData
   }
 ) {
+  const { itemsCart, setItemCart } = useContext(ItemCartContext);
+
   return (
     <div className="store-item">
       <img
@@ -18,8 +23,30 @@ function ItemCard(
       <div className="item-cost">
         {props.item.cost}
       </div>
+      <div className="item-buttons">
+        <button
+          className="add-to-cart"
+          onClick={() => handleAddToCart(props.item)}
+          disabled={itemInCart(itemsCart, props.item.id)}
+        >
+          Add to cart
+        </button>
+      </div>
     </div>
   );
+
+  function handleAddToCart(item: ItemData) {
+    if (itemInCart(itemsCart, item.id)) {
+      return;
+    }
+
+    setItemCart((prevState) => {
+      return {
+        ...prevState,
+        [item.id]: item
+      }
+    });
+  }
 
   function setSprite(spriteUrl: string) {
     if (spriteUrl) {
