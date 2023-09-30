@@ -10,12 +10,13 @@ export const userReadableNavigationOptions: {
 } = {
   home: 'Home',
   search: 'Search',
-  featured: 'Featured Pokemon',
+  featured: 'Featured Items',
   cart: 'My Team'
 };
 
 export type ItemData = {
+  cost: number,
+  id: number,
   name: string,
   spriteUrl: string,
-  cost: number
 }

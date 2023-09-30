@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ItemData } from "../data/types";
 import { randomNumberGenerator } from "../helpers";
+import ItemCard from "./ItemCard";
 
 function Featured() {
   const [itemData, setItemData] = useState<ItemData[]>([]);
@@ -10,9 +11,12 @@ function Featured() {
   }, []);
 
   return (
-    <div>
-      {/* TODO Import card component */}
-      Featured Items!!
+    <div className="featured-items">
+      {
+        itemData.map(item => (
+          <ItemCard item={item} />
+        ))
+      }
     </div>
   );
 
@@ -27,11 +31,13 @@ function Featured() {
           const data = await promise.json();
 
           requestData.push({
+            cost: data.cost,
+            id: data.id,
             name: data.name,
             spriteUrl: data.sprites.default,
-            cost: data.cost
           })
         }
+
         setItemData(requestData);
       }).catch(error => {
         // TODO: Handle error with some UI indicating a failure to get pokemon data
