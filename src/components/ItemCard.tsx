@@ -24,9 +24,22 @@ function ItemCard(
       <div className="item-cost">
         {props.item.cost}
       </div>
+      {quantityInCart()}
       {showAddOrRemoveButton()}
     </div>
   );
+
+  function quantityInCart() {
+    if (itemInCart(itemsCart, props.item.id)) {
+      return (
+        <div className="item-quantity-count">
+          {`Quantity in cart: ${itemsCart[props.item.id].quantity}`}
+        </div>
+      )
+    }
+
+    return null;
+  }
 
   function handleAddToCart(item: ItemData, quantity: number) {
     if (itemInCart(itemsCart, item.id)) {
