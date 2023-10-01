@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DataRequest, ItemData } from "../data/types";
-import { randomNumberGenerator } from "../helpers";
+import { getEnglishName, randomNumberGenerator } from "../helpers";
 import ItemCard from "./ItemCard";
 import "../styles/items-container.css";
 
@@ -51,7 +51,7 @@ function Featured() {
           requestData.push({
             cost: data.cost,
             id: data.id,
-            name: data.name,
+            name: getEnglishName(data.names),
             spriteUrl: data.sprites.default,
           })
         }

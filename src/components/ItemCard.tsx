@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { ItemCartContext } from "../Context";
 import { ItemData } from "../data/types";
 import { itemInCart } from "../helpers";
+import '../styles/item-card.css'
+import ItemCost from "./ItemCost";
 
 function ItemCard(
   props: {
@@ -12,7 +14,7 @@ function ItemCard(
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="store-item">
+    <div className="item-container">
       <img
         src={setSprite(props.item.spriteUrl)}
         alt={props.item.name}
@@ -21,9 +23,7 @@ function ItemCard(
       <div className="item-name">
         {props.item.name}
       </div>
-      <div className="item-cost">
-        {props.item.cost}
-      </div>
+      <ItemCost itemCost={props.item.cost} />
       {quantityInCart()}
       {showAddOrRemoveButton()}
     </div>
@@ -93,17 +93,17 @@ function ItemCard(
       <div className="cart-buttons">
         <div className="quantity-buttons">
           <button
-            className="increase"
-            onClick={() => setQuantity(quantity + 1)}
-          >
-            +
-          </button>
-          <button
             className="decrease"
             onClick={() => setQuantity(quantity - 1)}
             disabled={quantity === 1}
           >
             -
+          </button>
+          <button
+            className="increase"
+            onClick={() => setQuantity(quantity + 1)}
+          >
+            +
           </button>
         </div>
         <button
