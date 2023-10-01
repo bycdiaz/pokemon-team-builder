@@ -1,4 +1,4 @@
-import { Cart, ItemData } from "./data/types";
+import { Cart, ItemData, NameRequestData } from "./data/types";
 
 export function randomNumberGenerator() {
   const randomNumbers: number[] = [];
@@ -30,6 +30,10 @@ export function itemsInCart(cart: Cart): number {
   }, 0);
 }
 
+export function cartIsEmpty(cart: Cart): boolean {
+  return itemsInCart(cart) === 0;
+}
+
 /**
  * Total cost of all items in cart
  */
@@ -37,4 +41,8 @@ export function totalCost(cart: Cart) {
   return Object.values(cart).reduce((total, item) => {
     return total + item.item.cost * item.quantity;
   }, 0);
+}
+
+export function getEnglishName(names: NameRequestData[]) {
+  return names.find(name => name.language.name === 'en')?.name || 'Name not found';
 }
