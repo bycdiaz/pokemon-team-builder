@@ -1,0 +1,8 @@
+.items-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5%;
+  justify-content: space-around;
+}

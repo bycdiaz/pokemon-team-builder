@@ -8,9 +8,9 @@ function App(props: {
   return (
     <div>
       <Header pageTitle='Pokemon Store' />
-      <h2>
+      <div className='content-container'>
         {content()}
-      </h2>
+      </div>
     </div>
   )
 

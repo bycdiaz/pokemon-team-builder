@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { DataRequest, ItemData } from "../data/types";
 import { randomNumberGenerator } from "../helpers";
 import ItemCard from "./ItemCard";
+import "../styles/items-container.css";
 
 
 function Featured() {
@@ -15,7 +16,7 @@ function Featured() {
   switch (dataRequest) {
     case 'loaded':
       return (
-        <div className="featured-items">
+        <div className="featured-items items-container">
           {
             itemData.map(item => (
               <ItemCard item={item} />

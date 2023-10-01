@@ -3,6 +3,7 @@ import { NavigationOption, userReadableNavigationOptions } from "../data/types";
 import { useContext } from "react";
 import { ItemCartContext } from "../Context";
 import { itemsInCart } from "../helpers";
+import '../styles/navigation.css';
 
 function Navigation(props: {
   navOptions: readonly NavigationOption[]
@@ -10,10 +11,10 @@ function Navigation(props: {
   const { itemsCart } = useContext(ItemCartContext);
 
   return (
-    <div>
+    <div className="navigation-links">
       {props.navOptions.map(option => {
         return (
-          <div className="navigation-link">
+          <div className={`navigation-link ${option}`}>
             <Link
               to={setLink(option)}
               key={option}
