@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-function Error() {
+function Error(
+  props: {
+    errorMessage: string;
+  }
+) {
   return (
     <div className="error-page">
       <img
@@ -8,7 +12,7 @@ function Error() {
         alt="Sprite of Snorlax"
       />
       <div className="error-message">
-        Oh no! This page doesn't exist.
+        {props.errorMessage}
       </div>
       <Link
         to={'/'}

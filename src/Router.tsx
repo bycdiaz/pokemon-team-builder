@@ -10,7 +10,11 @@ const Router = () => {
       {
         path: "/",
         element: <App />,
-        errorElement: <Error />,
+        errorElement: (
+          <Error
+            errorMessage="Oh no! This page doesn't exist!"
+          />
+        ),
       },
       {
         path: `/${featured}`,
@@ -18,9 +22,12 @@ const Router = () => {
           <App
             child={<ContentContainer sectionName={featured} />}
           />
-        )
-        ,
-        errorElement: <Error />,
+        ),
+        errorElement: (
+          <Error
+            errorMessage="Oh no! This page doesn't exist!"
+          />
+        ),
       },
       {
         path: `/${cart}`,
@@ -28,9 +35,12 @@ const Router = () => {
           <App
             child={<ContentContainer sectionName={cart} />}
           />
-        )
-        ,
-        errorElement: <Error />,
+        ),
+        errorElement: (
+          <Error
+            errorMessage="Oh no! This page doesn't exist!"
+          />
+        ),
       }
     ])
   } />;

@@ -1,20 +1,16 @@
-import { NavigationOption, userReadableNavigationOptions } from "../data/types";
+import { NavigationOption } from "../data/types";
 import Featured from "./Featured";
 import Cart from "./Cart";
+import Error from "./Error";
 
 function ContentContainer(props: { sectionName: NavigationOption }) {
-
   if (props.sectionName === 'featured') {
     return <Featured />;
   } else if (props.sectionName === 'cart') {
     return <Cart />;
-  } else {
-    return (
-      <div>
-        {userReadableNavigationOptions[props.sectionName]}
-      </div>
-    )
   }
+
+  return <Error errorMessage="Oh no! This content doesn't exist!" />
 }
 
 export default ContentContainer;
