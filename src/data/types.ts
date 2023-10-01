@@ -27,3 +27,11 @@ export type Cart = {
 }
 
 export type DataRequest = 'loading' | 'loaded' | 'error';
+
+export type NameRequestData = {
+  name: string;
+  language: {
+    name: string,
+    url: string
+  }
+}
