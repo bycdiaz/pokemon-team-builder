@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ContentContainer from "./components/ContentContainer";
+import Error from "./components/Error";
 import { featured, cart } from "./data/types";
 
 const Router = () => {
@@ -9,7 +10,7 @@ const Router = () => {
       {
         path: "/",
         element: <App />,
-        // errorElement: <ErrorPage />,
+        errorElement: <Error />,
       },
       {
         path: `/${featured}`,
@@ -19,7 +20,7 @@ const Router = () => {
           />
         )
         ,
-        // errorElement: <ErrorPage />,
+        errorElement: <Error />,
       },
       {
         path: `/${cart}`,
@@ -29,7 +30,7 @@ const Router = () => {
           />
         )
         ,
-        // errorElement: <ErrorPage />,
+        errorElement: <Error />,
       }
     ])
   } />;
