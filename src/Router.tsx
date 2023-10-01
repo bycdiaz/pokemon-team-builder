@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import ContentContainer from "./components/ContentContainer";
-import { featured, search, cart } from "./data/types";
+import { featured, cart } from "./data/types";
 
 const Router = () => {
   return <RouterProvider router={
@@ -9,16 +9,6 @@ const Router = () => {
       {
         path: "/",
         element: <App />,
-        // errorElement: <ErrorPage />,
-      },
-      {
-        path: `/${search}`,
-        element: (
-          <App
-            child={<ContentContainer sectionName={search} />}
-          />
-        )
-        ,
         // errorElement: <ErrorPage />,
       },
       {
