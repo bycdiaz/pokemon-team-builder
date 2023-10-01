@@ -65,6 +65,7 @@ function ItemCard(
     const currentState = { ...itemsCart };
     delete currentState[item.id];
     setItemCart(currentState);
+    setQuantity(1);
   }
 
   function setSprite(spriteUrl: string) {
