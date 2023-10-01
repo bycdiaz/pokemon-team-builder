@@ -1,0 +1,27 @@
+.item-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 20px;
+  border-radius: 5px;
+  margin: 30px 0 20px 0;
+}
+
+.item-cost-container {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.pokedollar-image {
+  width: auto;
+  height: 15px;
+}
+
+.cart-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}

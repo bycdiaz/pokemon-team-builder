@@ -1,0 +1,11 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-total-cost {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
