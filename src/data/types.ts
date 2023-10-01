@@ -25,3 +25,5 @@ export type Cart = {
     quantity: number
   }
 }
+
+export type DataRequest = 'loading' | 'loaded' | 'error';

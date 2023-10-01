@@ -1,24 +1,41 @@
 import { useEffect, useState } from "react";
-import { ItemData } from "../data/types";
+import { DataRequest, ItemData } from "../data/types";
 import { randomNumberGenerator } from "../helpers";
 import ItemCard from "./ItemCard";
 
+
 function Featured() {
   const [itemData, setItemData] = useState<ItemData[]>([]);
+  const [dataRequest, setDataRequest] = useState<DataRequest>('loading');
 
   useEffect(() => {
     getFeaturedItemData();
   }, []);
 
-  return (
-    <div className="featured-items">
-      {
-        itemData.map(item => (
-          <ItemCard item={item} />
-        ))
-      }
-    </div>
-  );
+  switch (dataRequest) {
+    case 'loaded':
+      return (
+        <div className="featured-items">
+          {
+            itemData.map(item => (
+              <ItemCard item={item} />
+            ))
+          }
+        </div>
+      )
+    case 'loading':
+      return (
+        <div className="loading">
+          Loading...
+        </div>
+      );
+    case 'error':
+      return (
+        <div className="error">
+          Oh no! An error occurred while getting the data!
+        </div>
+      );
+  }
 
   async function getFeaturedItemData() {
     Promise.all(randomNumberGenerator().map(idNumber =>
@@ -39,9 +56,9 @@ function Featured() {
         }
 
         setItemData(requestData);
-      }).catch(error => {
-        // TODO: Handle error with some UI indicating a failure to get pokemon data
-        console.log(error);
+        setDataRequest('loaded');
+      }).catch(() => {
+        setDataRequest('error');
       })
   }
 }
