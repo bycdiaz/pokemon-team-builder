@@ -19,7 +19,7 @@ function App(props: {
       return props.child;
     }
 
-    return 'Welcome to the Pokemon Store. Wow!';
+    return "Welcome to the Pokemon Store. Wow! Go to the Featured Items page for today's selection";
   }
 }
 
